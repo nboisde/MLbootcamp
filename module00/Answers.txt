@@ -1,0 +1,10 @@
+1.Because theta is in dimension 2. [theta1, theta2] to keep theta1 + (theta2 * x) we must have 1, x form
+2. |yhat - y| = sqrt((yhat - y)^2)
+		i.e |yhat - y|^2 = (yhat - y)^2 = dot
+3. the "distance" or in other words, the accuracy of our prediction: for y as y and y as y_hat cost = 0 -> prediction is the same than mesured values.
+4. ->0 see above
+5. because of dimension first.
+	ex. shape(A) = (3, 2)
+		shape(B) = (2, 3)
+		shape(A*B) = (3, 3)
+		shape(B*A) = (2, 2)

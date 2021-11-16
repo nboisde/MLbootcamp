@@ -11,6 +11,7 @@ class MyLinearRegression():
 		if isinstance(thetas, np.ndarray):
 			if thetas.ndim == 2 and thetas.shape == (2, 1):
 				thetas = [thetas[0][0], thetas[1][0]]
+		#thetas = [thetas[0][0], thetas[1][0]]
 		if len(thetas) != 2 or not isinstance(thetas[0], (int, float)) or not isinstance(thetas[1], (int, float)):
 			raise ValueError("Thetas should be a list of two floats")
 		if not isinstance(alpha, float):
@@ -175,26 +176,34 @@ class MyLinearRegression():
 		
 
 
-data = pd.read_csv('are_blue_pills_magics.csv')
-Xpill = np.array(data['Micrograms']).reshape(-1,1)
-Yscore = np.array(data['Score']).reshape(-1,1)
+#data = pd.read_csv('are_blue_pills_magics.csv')
+#Xpill = np.array(data['Micrograms']).reshape(-1,1)
+#Yscore = np.array(data['Score']).reshape(-1,1)
+#
+#thetas = np.array([[89.0], [-8]])
+#linear_model1 = MyLinearRegression(np.array([[89.0], [-8]]))
+#Y_model1 = linear_model1.predict_(Xpill)
+#xleg = "Quantity of blue pills (in microgram)"
+#yleg = "Space driving score"
+##linear_model1.plot_prediction_(Xpill, Yscore, xleg, yleg)
+#linear_model1.fit_(Xpill, Yscore)
+#print(linear_model1.thetas)
+##linear_model1.plot_prediction_(Xpill, Yscore, xleg, yleg)
+#linear_model1.plot_loss_(Yscore, Y_model1)
+#
+#
+#print(linear_model1.mse_(Yscore, Y_model1))
+#print(mean_squared_error(Yscore, Y_model1))
+#
+#linear_model2 = MyLinearRegression(np.array([[89.0], [-6]]))
+#Y_model2 = linear_model2.predict_(Xpill)
+#print(linear_model2.mse_(Yscore, Y_model2))
+#print(mean_squared_error(Yscore, Y_model2))
 
-thetas = np.array([[89.0], [-8]])
-linear_model1 = MyLinearRegression(np.array([[89.0], [-8]]))
-Y_model1 = linear_model1.predict_(Xpill)
-xleg = "Quantity of blue pills (in microgram)"
-yleg = "Space driving score"
-#linear_model1.plot_prediction_(Xpill, Yscore, xleg, yleg)
-linear_model1.fit_(Xpill, Yscore)
-print(linear_model1.thetas)
-#linear_model1.plot_prediction_(Xpill, Yscore, xleg, yleg)
-linear_model1.plot_loss_(Yscore, Y_model1)
 
-
-print(linear_model1.mse_(Yscore, Y_model1))
-print(mean_squared_error(Yscore, Y_model1))
-
-linear_model2 = MyLinearRegression(np.array([[89.0], [-6]]))
-Y_model2 = linear_model2.predict_(Xpill)
-print(linear_model2.mse_(Yscore, Y_model2))
-print(mean_squared_error(Yscore, Y_model2))
+data = pd.read_csv("../../module02/spacecraft_data.csv")
+X = np.array(data[['Age']])
+Y = np.array(data[['Sell_price']])
+myLR_age = MyLinearRegression(thetas=[[1000.0], [-1.0]], alpha = 2.5e-5, max_iter = 100000)
+myLR_age.fit_(X[:,0].reshape(-1,1), Y)
+print(myLR_age.mse_(X[:,0].reshape(-1,1),Y))

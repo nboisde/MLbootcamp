@@ -96,6 +96,10 @@ class MyLinearRegression():
 		plt.grid()
 		plt.show()
 	
+	def normal_equation(self, x, y):
+		x = np.c_[np.ones(x.shape[0]), x]
+		theta = np.linalg.inv((np.transpose(x).dot(x))).dot(np.transpose(x).dot(y))
+		return (theta)
 
 # UNIVARIATE MODEL WITH AGE.
 #print("----------UNIVARIATE LINEAR REGRESSION ON AGE-----------")
@@ -134,7 +138,7 @@ class MyLinearRegression():
 #Y = np.array(data[['Sell_price']])
 #my_lreg = MyLinearRegression(theta = [250.0, -20.0, 4.0, -2.0], alpha = 2.3e-5, max_iter = 620000)
 #print(my_lreg.mse_(X,Y))
-#
+
 #my_lreg.fit_(X,Y)
 #print(my_lreg.theta)
 #print(my_lreg.mse_(my_lreg.predict_(X),Y))
@@ -144,6 +148,8 @@ class MyLinearRegression():
 #my_lreg.plot_uni(Xth, Y, my_lreg.predict_(X), "x1: Thrust power", "y: sell price (in keuros)", "sell price", "predicted sell price", coly='green', colyh='lightgreen')
 #Xmet = np.array(data[['Terameters']])
 #my_lreg.plot_uni(Xmet, Y, my_lreg.predict_(X), "x1: Thrust power", "y: sell price (in keuros)", "sell price", "predicted sell price", coly='purple', colyh='#b19cd9')
+#theta = my_lreg.normal_equation(X, Y)
+#print(theta)
 
 # plot picturized are calculated with final theta values of 
 #theta = [[333.93924232], [-22.49725381], [5.86129269], [-2.58474427]]

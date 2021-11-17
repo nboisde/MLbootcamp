@@ -57,10 +57,6 @@ class MyLinearRegression():
 			raise TypeError("y and y_hat should be numpy arrays")
 		if y.ndim != y_hat.ndim:
 			raise ValueError("y and y_hat must have same dim")
-		#tmp = y - y_hat
-		#if y.shape[0] != y.shape[1]:
-		#	if y.shape[1] == y_hat.shape[1]:
-		#		tmp = np.transpose(y - y_hat)
 		if y.shape[0] != y.shape[1]:# and y.shape[0] == y_hat.shape[0]:
 			tmp = np.transpose(y - y_hat)
 		else:
@@ -102,14 +98,14 @@ class MyLinearRegression():
 	
 
 # UNIVARIATE MODEL WITH AGE.
-print("----------UNIVARIATE LINEAR REGRESSION ON AGE-----------")
-data = pd.read_csv("../spacecraft_data.csv")
-X = np.array(data[['Age']])
-Y = np.array(data[['Sell_price']])
-myLR_age = MyLinearRegression(theta = [[1000.0], [-1.0]], alpha = 2.5e-5, max_iter = 100000)
-myLR_age.fit_(X[:,0].reshape(-1,1), Y)
-print(myLR_age.mse_(myLR_age.predict_(X[:,0].reshape(-1,1)),Y))
-myLR_age.plot_uni(X, Y, myLR_age.predict_(X), "x1: age in years", "y: sell price (in keuros)", "sell price", "predicted sell price")
+#print("----------UNIVARIATE LINEAR REGRESSION ON AGE-----------")
+#data = pd.read_csv("../spacecraft_data.csv")
+#X = np.array(data[['Age']])
+#Y = np.array(data[['Sell_price']])
+#myLR_age = MyLinearRegression(theta = [[1000.0], [-1.0]], alpha = 2.5e-5, max_iter = 100000)
+#myLR_age.fit_(X[:,0].reshape(-1,1), Y)
+#print(myLR_age.mse_(myLR_age.predict_(X[:,0].reshape(-1,1)),Y))
+#myLR_age.plot_uni(X, Y, myLR_age.predict_(X), "x1: age in years", "y: sell price (in keuros)", "sell price", "predicted sell price")
 
 # UNIVARIATE MODEL WITH THRUST.
 #print("----------UNIVARIATE LINEAR REGRESSION ON THRUST-----------")
@@ -132,22 +128,22 @@ myLR_age.plot_uni(X, Y, myLR_age.predict_(X), "x1: age in years", "y: sell price
 #myLR_dis.plot_uni(X3, Y3, myLR_dis.predict_(X3), "x1: age in years", "y: sell price (in keuros)", "sell price", "predicted sell price")
 
 
-print("----------MULTIVARIATE LINEAR REGRESSION-----------")
-data = pd.read_csv("../spacecraft_data.csv")
-X = np.array(data[['Age','Thrust_power','Terameters']])
-Y = np.array(data[['Sell_price']])
-my_lreg = MyLinearRegression(theta = [250.0, -20.0, 4.0, -2.0], alpha = 2.3e-5, max_iter = 620000)
-print(my_lreg.mse_(X,Y))
-
-my_lreg.fit_(X,Y)
-print(my_lreg.theta)
-print(my_lreg.mse_(my_lreg.predict_(X),Y))
-Xage = np.array(data[['Age']])
-my_lreg.plot_uni(Xage, Y, my_lreg.predict_(X), "x1: age in years", "y: sell price (in keuros)", "sell price", "predicted sell price")
-Xth = np.array(data[['Thrust_power']])
-my_lreg.plot_uni(Xth, Y, my_lreg.predict_(X), "x1: Thrust power", "y: sell price (in keuros)", "sell price", "predicted sell price", coly='green', colyh='lightgreen')
-Xmet = np.array(data[['Terameters']])
-my_lreg.plot_uni(Xmet, Y, my_lreg.predict_(X), "x1: Thrust power", "y: sell price (in keuros)", "sell price", "predicted sell price", coly='purple', colyh='#b19cd9')
+#print("----------MULTIVARIATE LINEAR REGRESSION-----------")
+#data = pd.read_csv("../spacecraft_data.csv")
+#X = np.array(data[['Age','Thrust_power','Terameters']])
+#Y = np.array(data[['Sell_price']])
+#my_lreg = MyLinearRegression(theta = [250.0, -20.0, 4.0, -2.0], alpha = 2.3e-5, max_iter = 620000)
+#print(my_lreg.mse_(X,Y))
+#
+#my_lreg.fit_(X,Y)
+#print(my_lreg.theta)
+#print(my_lreg.mse_(my_lreg.predict_(X),Y))
+#Xage = np.array(data[['Age']])
+#my_lreg.plot_uni(Xage, Y, my_lreg.predict_(X), "x1: age in years", "y: sell price (in keuros)", "sell price", "predicted sell price")
+#Xth = np.array(data[['Thrust_power']])
+#my_lreg.plot_uni(Xth, Y, my_lreg.predict_(X), "x1: Thrust power", "y: sell price (in keuros)", "sell price", "predicted sell price", coly='green', colyh='lightgreen')
+#Xmet = np.array(data[['Terameters']])
+#my_lreg.plot_uni(Xmet, Y, my_lreg.predict_(X), "x1: Thrust power", "y: sell price (in keuros)", "sell price", "predicted sell price", coly='purple', colyh='#b19cd9')
 
 # plot picturized are calculated with final theta values of 
 #theta = [[333.93924232], [-22.49725381], [5.86129269], [-2.58474427]]

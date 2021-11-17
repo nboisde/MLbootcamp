@@ -9,7 +9,6 @@ def add_polynomial_features(x, power):
 		raise ValueError("power must be positive")
 	return np.fliplr(np.column_stack([x**((power + 1) - 1 - i) for i in range(power)]))
 
-x = np.arange(1,6).reshape(-1, 1)
-print(add_polynomial_features(x, 3))
-print(add_polynomial_features(x, 6))
-print(add_polynomial_features(x, 1))
+#x = np.arange(1,6).reshape(-1, 1)
+#print(add_polynomial_features(x, 3))
+#print(add_polynomial_features(x, 6))

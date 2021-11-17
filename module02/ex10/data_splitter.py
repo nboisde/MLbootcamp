@@ -1,6 +1,6 @@
 import numpy as np
 
-def data_splitter(x, y, proportion):
+def data_splitter(x, y, proportion=0.80):
     if not isinstance(x, np.ndarray):
         return None
     if not isinstance(y, np.ndarray):
@@ -28,14 +28,8 @@ def data_splitter(x, y, proportion):
     test = tmp[split_horizontally_idx: , :]
     strain = train
     stest = test
-    x_train = np.delete(train, -1, axis=1)
-    x_test = np.delete(test, -1, axis=1)
+    x_train = np.delete(train, -1, axis=1)#train[:,:x.shape[0]]
+    x_test = np.delete(test, -1, axis=1)#test[:,:x.shape[0]]
     y_train = strain[:, -1].reshape(-1, 1)
     y_test = stest[:, -1].reshape(-1, 1)
     return (x_train, x_test, y_train, y_test)
-    
-    
-
-x = np.array([[1, 2, 3, 4], [2, 3, 4, 5], [4, 5, 6, 7], [10, 10, 10, 10]])
-y = np.array([20, 21, 22, 23])
-print(data_splitter(x, y, 0.80))

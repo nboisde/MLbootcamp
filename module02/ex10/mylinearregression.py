@@ -1,3 +1,4 @@
+from numba import jit, cuda
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -15,13 +16,14 @@ class MyLinearRegression():
 		self.theta = np.array(theta)
 		self.alpha = alpha
 		self.max_iter = max_iter
-
+	
 	def gradient(self, x, y):
 		if not isinstance(x, np.ndarray) or not isinstance(y, np.ndarray) or not isinstance(self.theta, np.ndarray):
 			raise TypeError("varaibles must be np.arrays")
 		if y.shape[0] != x.shape[0] or x.shape[1] + 1 != self.theta.shape[0]:
 			raise ValueError("impossible to calculate due to error dimentions")
 		x = np.c_[np.ones(x.shape[0]), x]
+		#@jit
 		return ((1/y.size) * np.transpose(x).dot(x.dot(self.theta) - y))
 
 	def predict_(self, x):
@@ -47,6 +49,7 @@ class MyLinearRegression():
 		if x.ndim != 1:
 			self.theta = self.theta.reshape((len(self.theta), 1))
 		#print(self.theta)
+		#@jit
 		for i in range(self.max_iter):
 			self.theta = self.theta - self.alpha * self.gradient(x, y)
 		return self.theta
@@ -86,7 +89,7 @@ class MyLinearRegression():
 
 	def mse_(self, y, y_hat):
 		return (2 * self.loss_(y, y_hat))
-	
+
 	def plot_uni(self, x, y, y_hat, xax="x axis", yax="y axis", yleg="data", yhleg="predicted", coly='blue', colyh='lightblue'):
 		plt.xlabel(xax)
 		plt.ylabel(yax)

@@ -28,8 +28,8 @@ def data_splitter(x, y, proportion):
     test = tmp[split_horizontally_idx: , :]
     strain = train
     stest = test
-    x_train = np.delete(train, -1, axis=1)
-    x_test = np.delete(test, -1, axis=1)
+    x_train = np.delete(train, -1, axis=1)#train[:,:x.shape[0]]
+    x_test = np.delete(test, -1, axis=1)#test[:,:x.shape[0]]
     y_train = strain[:, -1].reshape(-1, 1)
     y_test = stest[:, -1].reshape(-1, 1)
     return (x_train, x_test, y_train, y_test)

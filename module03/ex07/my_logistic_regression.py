@@ -96,10 +96,22 @@ class MyLogisticRegression():
 			else:
 				ax.scatter(x[i][0], x[i][1], x[i][2], color='green')
 		for i, val in enumerate(y_hat):
-			if val >= 1.0:
-				ax.scatter(x[i][0], x[i][1], x[i][2], color='pink', marker='.')
+			if val >= 0.5:
+				ax.scatter(x[i][0], x[i][1], x[i][2], color='red', marker='.')
 			else:
 				ax.scatter(x[i][0], x[i][1], x[i][2], color='yellow', marker='.')
 		
 		plt.show()
 
+	def appartenance_proportion(self, y):
+		if not isinstance(y, np.ndarray):
+			raise TypeError("appartenance proportion: y should be a np array")
+		ones = 0
+		zeros = 0
+		for val in y:
+			if val >= 0.5:
+				ones += 1
+			else:
+				zeros += 1
+		l = y.shape[0]
+		return ones / l

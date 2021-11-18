@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
 from data_splitter import data_splitter
 from my_logistic_regression import MyLogisticRegression as MyLR
 import sys
@@ -50,10 +49,14 @@ if __name__ == "__main__":
 	model.fit_(X_TRAIN, Y_TRAIN)
 	print(model.theta)
 	print(model.loss_(X_TRAIN, Y_TRAIN))
-	print(model.predict_(X_TEST))
+	Y_PRED = model.predict_(X_TEST)
+	print(Y_PRED)
 
 	model.plot_1D(X_TEST[:, 0], Y_TEST, model.predict_(X_TEST), xax="height", yax="planet", yleg="data", yhleg="predicted", coly='blue', colyh='lightblue')
 	model.plot_1D(X_TEST[:, 1], Y_TEST, model.predict_(X_TEST), xax="weight", yax="planet", yleg="data", yhleg="predicted", coly='green', colyh='lightgreen')
 	model.plot_1D(X_TEST[:, 2], Y_TEST, model.predict_(X_TEST), xax="bone_density", yax="planet", yleg="data", yhleg="predicted", coly='purple', colyh='#b19cd9')
 
 	model.plot_3D(X_TEST, Y_TEST, model.predict_(X_TEST))
+	print(model.appartenance_proportion(Y_TEST))
+	print("y_pred appartenance proportion", model.appartenance_proportion(Y_PRED))
+	print("y_test appartenance proportion", model.appartenance_proportion(Y_TEST))

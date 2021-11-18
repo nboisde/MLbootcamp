@@ -96,10 +96,10 @@ class MyLogisticRegression():
 			else:
 				ax.scatter(x[i][0], x[i][1], x[i][2], color='green')
 		for i, val in enumerate(y_hat):
-			if val == 1.0:
-				ax.scatter(x[i][0], x[i][1], x[i][2], color='lightblue', marker='.')
+			if val >= 1.0:
+				ax.scatter(x[i][0], x[i][1], x[i][2], color='pink', marker='.')
 			else:
-				ax.scatter(x[i][0], x[i][1], x[i][2], color='lightgreen', marker='.')
+				ax.scatter(x[i][0], x[i][1], x[i][2], color='yellow', marker='.')
 		
 		plt.show()
 

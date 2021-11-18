@@ -61,11 +61,12 @@ def log_loss_(y, y_hat, eps=1e-15):
 	for yv, yhv in zip(y2, y_hat2):
 		tmp = (yv[0] * math.log(yhv[0])) + ((1 - yv[0]) * math.log(1 - yhv[0]))
 		sum += tmp
-	return ((-1) / y.size) * sum
+	#return ((-1) / y.size) * sum
+	return - 1 / y.shape[0] * (np.sum(y * np.log(y_hat + eps) + (1 - y) * np.log(1 - y_hat + eps)))
 	
 
 y1 = np.array([1])
-x1 = np.array([1])
+x1 = np.array([4])
 theta1 = np.array([[2], [0.5]])
 y_hat1 = logistic_predict_(x1, theta1)
 print(log_loss_(y1, y_hat1))

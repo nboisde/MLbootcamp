@@ -1,4 +1,3 @@
-from numba import jit, cuda
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt

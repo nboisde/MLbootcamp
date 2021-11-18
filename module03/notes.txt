@@ -1,0 +1,4 @@
+LOGISTIC REGRESSION: classification algorithm (!regression name dont mean reg)
+
+sigmoid function to predict and evaluate : gives probability of one and zero, means belongs or not to a group.
+Loss function: usage of logarithm: CROSS ENTROPY

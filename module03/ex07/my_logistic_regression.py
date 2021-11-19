@@ -115,3 +115,6 @@ class MyLogisticRegression():
 				zeros += 1
 		l = y.shape[0]
 		return ones / l
+
+	# Center all distribution on a pandas data frame.
+	#(X - np.mean(X)) / np.std(X)

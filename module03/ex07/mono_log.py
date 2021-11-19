@@ -45,7 +45,6 @@ if __name__ == "__main__":
 	X_TEST = clean_set[1]
 
 	model = MyLR([[0], [0], [0], [0]], max_iter=10000)
-	#model.predict_(X_TRAIN)
 	model.fit_(X_TRAIN, Y_TRAIN)
 	print(model.theta)
 	print(model.loss_(X_TRAIN, Y_TRAIN))

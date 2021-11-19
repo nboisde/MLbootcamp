@@ -1,0 +1,44 @@
+--------------------------------------------------
+logistic regression for planet 0
+caracteristics: alpha: 0.0001, max_iteration: 1000000
+--------------------------------------------------
+model theta after fitting:
+[[ 3.28037191e-01]
+ [-2.16729266e-03]
+ [-4.24764257e-03]
+ [ 2.67550037e+00]]
+model loss on training data:  0.3390932080334579
+model loss on test data:  0.4132560791140428
+--------------------------------------------------
+logistic regression for planet 1
+caracteristics: alpha: 0.0001, max_iteration: 1000000
+--------------------------------------------------
+model theta after fitting:
+[[ 1.03417729]
+ [-0.00562258]
+ [-0.0298258 ]
+ [ 1.49263311]]
+model loss on training data:  0.5080553255058041
+model loss on test data:  0.5137286735055153
+--------------------------------------------------
+logistic regression for planet 2
+caracteristics: alpha: 0.0001, max_iteration: 1000000
+--------------------------------------------------
+model theta after fitting:
+[[ 0.50361885]
+ [-0.02776686]
+ [ 0.0119595 ]
+ [ 2.8532862 ]]
+model loss on training data:  0.46438500720724357
+model loss on test data:  0.45776556215814945
+--------------------------------------------------
+logistic regression for planet 3
+caracteristics: alpha: 0.0001, max_iteration: 1000000
+--------------------------------------------------
+model theta after fitting:
+[[-0.86226516]
+ [-0.03865065]
+ [ 0.09130986]
+ [-1.10119574]]
+model loss on training data:  0.4399506284549548
+model loss on test data:  0.48227058838267745

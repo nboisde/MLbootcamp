@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from data_splitter_one_for_all import data_splitter_one_for_all, data_splitter_one_for_all_v2
 from my_logistic_regression import MyLogisticRegression as MyLR
+from minmax import minmax
 
 dssc = pd.read_csv("../solar_system_census.csv")
 print(dssc.head())
@@ -26,8 +27,8 @@ print(np.c_[tpl2[1], tpl2[3], tpl2[5]])
 #print(tpl[0], tpl[2])
 #print(tpl[1], tpl[3])
 
-X_TRAIN = tpl2[2]
-X_TEST = tpl2[3]
+X_TRAIN = np.c_[minmax(tpl2[2][:,0]),minmax(tpl2[2][:,1]),tpl2[2][:,2]]
+X_TEST = np.c_[minmax(tpl2[3][:,0]),minmax(tpl2[3][:,1]),tpl2[3][:,2]]
 
 Y_TRAIN0 = (tpl2[4][:, 0]).reshape(-1, 1)
 Y_TRAIN1 = tpl2[4][:, 1].reshape(-1, 1)
@@ -64,9 +65,10 @@ Y_PRED0 = model_training_3(X_TRAIN, Y_TRAIN0, X_TEST, Y_TEST0, model_name="logis
 #model0 = MyLR(theta0, alpha=0.0001, max_iter=200000)
 #Y_PRED0 = (model0.theta, model0.predict_(X_TEST), model0.predict_(X_TRAIN))
 #print(np.c_[tpl2[1], Y_PRED0[1]])
+#print(X_TRAIN)
 
 # TRAINING
-Y_PRED1 = model_training_3(X_TRAIN, Y_TRAIN1, X_TEST, Y_TEST1, model_name="logistic regression for planet 1", al=0.001, mi=100000)
+Y_PRED1 = model_training_3(X_TRAIN, Y_TRAIN1, X_TEST, Y_TEST1, model_name="logistic regression for planet 1", al=0.0001, mi=100000)
 #print(np.c_[tpl2[1], Y_PRED1[1]])
 
 # AVOID
@@ -76,7 +78,7 @@ Y_PRED1 = model_training_3(X_TRAIN, Y_TRAIN1, X_TEST, Y_TEST1, model_name="logis
 #print(np.c_[tpl2[1], Y_PRED1[1]])
 
 # TRAINING
-Y_PRED2 = model_training_3(X_TRAIN, Y_TRAIN2, X_TEST, Y_TEST2, model_name="logistic regression for planet 2", al=0.001, mi=100000)
+Y_PRED2 = model_training_3(X_TRAIN, Y_TRAIN2, X_TEST, Y_TEST2, model_name="logistic regression for planet 2", al=0.0001, mi=100000)
 #print(np.c_[tpl2[1], Y_PRED2[1]])
 
 # AVOID
@@ -86,7 +88,7 @@ Y_PRED2 = model_training_3(X_TRAIN, Y_TRAIN2, X_TEST, Y_TEST2, model_name="logis
 #print(np.c_[tpl2[1], Y_PRED2[1]])
 
 # TRAINING
-Y_PRED3 = model_training_3(X_TRAIN, Y_TRAIN3, X_TEST, Y_TEST3, model_name="logistic regression for planet 3", al=0.001, mi=100000)
+Y_PRED3 = model_training_3(X_TRAIN, Y_TRAIN3, X_TEST, Y_TEST3, model_name="logistic regression for planet 3", al=0.0001, mi=100000)
 #print(np.c_[tpl2[1], Y_PRED3[1]])
 
 # AVOID

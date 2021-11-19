@@ -81,6 +81,7 @@ Y_PRED0 = model_training_3(X_TRAIN, Y_TRAIN0, X_TEST, Y_TEST0, model_name="logis
 #print(np.c_[tpl2[1], Y_PRED0[1]])
 #print(X_TRAIN)
 
+
 # TRAINING
 Y_PRED1 = model_training_3(X_TRAIN, Y_TRAIN1, X_TEST, Y_TEST1, model_name="logistic regression for planet 1", al=0.001, mi=1000000)
 #print(np.c_[tpl2[1], Y_PRED1[1]])
@@ -118,3 +119,5 @@ Y_PRED3 = model_training_3(X_TRAIN, Y_TRAIN3, X_TEST, Y_TEST3, model_name="logis
 
 ALL_PREDS = np.c_[tpl2[1], Y_PRED0[1], Y_PRED1[1], Y_PRED2[1], Y_PRED3[1], tpl2[7]]
 print(ALL_PREDS)
+
+#np.argmax our np.argmin a appliquer sur ALL_PREDS pour trouver l'index...

@@ -45,6 +45,7 @@ class MyLogisticRegression():
 		th = self.theta.reshape((len(self.theta), 1))
 		x = np.c_[np.ones(x.shape[0]), x]
 		if th.shape[0] != x.shape[1]:
+			print(th.shape[0], x.shape[1])
 			raise ValueError("multiplictation impossible...")
 		tmp = x.dot(self.theta)
 		return self.sigmoid_(tmp)
